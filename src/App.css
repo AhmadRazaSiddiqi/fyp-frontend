@@ -1,0 +1,235 @@
+@import url('https://enztron-temp-deployed-branch.netlify.app/components.css');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+:root
+{
+    --pink-color              : #BD5D78;
+    --light-pink-ripple-effect: #e97798;
+    --dark-blue-color         : #333258;
+    --background-color        : #F3F3F3;
+    --offline-grey-color      : rgb(172, 172, 172);
+    --extra-orange-color      : #EF836D;
+    --complimentary-blue-color: #1AB3B3;
+    --notification-or-error   : #F44336;
+    --onlinestatus-or-success : #00d09c;
+    --awaystatus-or-warning   : #FF9800;
+    --dark-grey               : #282c34;
+    --light-grey              : rgb(243, 243, 243);
+    --grey                    : rgb(228, 228, 228);
+    --light-yellow            : rgb(224, 224, 212);
+    --white                   : white;
+    --component-example-bg-color: #F5F7F9;
+    --teal                    : #008080;
+    
+    /* Additional variables for video library */
+    --dark-grey-2   : #2F4858;
+    --royal-blue    : #29517C;
+    --sky-blue      : #0e7490;
+    --sky-blue-2    : #0b5c72;
+    --bluish-white  : #F5F7F9;
+    --pure-white    : white;
+    --red-color     : #ca0e1d;
+    --background-color-dull-yellow: #e0e0d4;
+    --yellow-background-color     : #efe6e1;
+    --dull-grey     : #8f8f8f;
+}
+
+html
+{
+    font-family: 'Comfortaa', cursive;
+}
+
+body
+{
+    font-family: 'Comfortaa', cursive;
+}
+
+html, body
+{
+    height: auto;
+    background-color: white;
+}
+
+.App {
+    min-height: 100%;
+    text-align: center;
+    background-color: white;
+    font-family: 'Comfortaa', cursive;
+}
+
+*::-webkit-scrollbar 
+{
+    height: 1em;
+}
+  
+*::-webkit-scrollbar-track 
+{
+    background: var(--light-grey);
+}
+  
+*::-webkit-scrollbar-thumb 
+{
+    background: var(--sky-blue);
+}
+
+a
+{
+    height: fit-content;
+}
+
+a::after
+{
+    content: '';
+    display: block;
+    width: 0px;
+    height: 0px;
+    background: var(--dark-blue-color);
+}
+
+a:hover::after
+{
+    width: 0;
+}
+
+.page-container
+{
+    min-height: calc(100vh - 107.23px);
+    display: grid;
+    grid-template-columns: 25rem 1fr;
+}
+
+@media only screen and (max-width:1015px){
+    .page-container
+    {
+        min-height: calc(100vh - 157.23px);
+    }
+}
+
+.videos-container, 
+.watch-later-video-container, 
+.liked-videos-list-container, 
+.history-videos-container,
+.playlist-video-container,
+.individual-playlist-video-container
+{
+    width:100%;
+    min-height: 40rem;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit,29.6rem);
+}
+
+.videos-container
+{
+    justify-content: space-between;
+}
+
+.watch-later-video-container, 
+.liked-videos-list-container, 
+.history-videos-container,
+.playlist-video-container,
+.individual-playlist-video-container
+{
+    justify-content: center;
+}
+
+.red-solid-btn
+{
+    width: fit-content;
+    color: var(--pure-white);
+    background-color: var(--red-color);
+}
+
+.red-solid-btn 
+{
+    background-position: center;
+    transition: background 0.5s;
+}
+
+.red-solid-btn:hover 
+{
+    background: var(--red-color)
+                radial-gradient(circle, transparent 1%, 
+                                    var(--red-color) 1%) center/15000%;
+}
+
+.red-solid-btn:active 
+{
+    background-color: var(--red-color);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+/* Layout classes that are missing */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-topbar-container,
+.right-topbar-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-topbar-container {
+    gap: 2rem;
+    flex: 1;
+}
+
+.right-topbar-container {
+    gap: 1rem;
+}
+
+/* Button styles that are missing */
+.solid-primary-btn {
+    background-color: var(--pink-color);
+    color: var(--white);
+    border: none;
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.solid-primary-btn:hover {
+    background-color: var(--light-pink-ripple-effect);
+}
+
+.solid-secondary-btn {
+    background-color: transparent;
+    color: var(--pink-color);
+    border: 2px solid var(--pink-color);
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.solid-secondary-btn:hover {
+    background-color: var(--pink-color);
+    color: var(--white);
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+    background-color: var(--grey);
+}
