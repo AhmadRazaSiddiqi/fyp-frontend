@@ -113,7 +113,7 @@ function History() {
         })()
       }
     }
-  },[])
+  },[setUserHistoryList, showToast])
 
   return (
       <div className='page-container'>

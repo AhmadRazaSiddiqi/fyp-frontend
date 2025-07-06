@@ -23,7 +23,7 @@ import axios from "axios";
 import API_BASE_URL from "./config/api";
 
 function App() {
-  const { allPlaylists, setAllPlaylists } = usePlaylist();
+  const { setAllPlaylists } = usePlaylist();
   const { dispatchWatchLaterList } = useWatchLater();
 
   window.YTConfig = {
@@ -66,7 +66,7 @@ function App() {
         localStorage.removeItem("token");
       }
     }
-  }, []);
+  }, [setAllPlaylists, dispatchWatchLaterList]);
 
   return (
     <Router>
@@ -78,17 +78,15 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           
           {/* Main routes with layout */}
-          
-            <Route path="/" element={<Home />} />
-            <Route path="explore" element={<VideoListingPage />} />
-            <Route path="video/:id" element={<VideoPage />} />
-            <Route path="watch-later" element={<WatchLater />} />
-            <Route path="liked-videos" element={<LikedVideos />} />
-            <Route path="playlist" element={<AllPlaylistPage />} />
-            <Route path="playlist/:playlistId" element={<IndividualPlaylistPage />} />
-            <Route path="history" element={<History />} />
-            <Route path="upload-video" element={<UploadVideo />} />
-          
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<VideoListingPage />} />
+          <Route path="/video/:id" element={<VideoPage />} />
+          <Route path="/watch-later" element={<WatchLater />} />
+          <Route path="/liked-videos" element={<LikedVideos />} />
+          <Route path="/playlist" element={<AllPlaylistPage />} />
+          <Route path="/playlist/:playlistId" element={<IndividualPlaylistPage />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/upload-video" element={<UploadVideo />} />
         </Routes>
         <Toast position="bottom-right" />
       </div>

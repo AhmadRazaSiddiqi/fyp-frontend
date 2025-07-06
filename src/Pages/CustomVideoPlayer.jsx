@@ -163,7 +163,7 @@ const CustomVideoPlayer = ({
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [isPlaying, isMuted]);
+  }, [isPlaying, isMuted, togglePlay, toggleMute, toggleFullscreen, skipTime]);
 
   // Fullscreen change listener
   useEffect(() => {

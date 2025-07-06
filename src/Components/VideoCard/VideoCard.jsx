@@ -2,7 +2,6 @@ import './VideoCard.css'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import jwt_decode from "jwt-decode"
-import sherlock from "../../Assets/images/sherlock1.webp"
 import {
     AiOutlineMore
 } from "react-icons/ai"
@@ -31,8 +30,8 @@ function VideoCard({ video, itemInUserHistory, isPlayListCard, playlistId })
 
     const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
     const { showToast } = useToast()
-    const { userHistoryList, setUserHistoryList } = useHistory()
-    const { allPlaylists, setAllPlaylists } = usePlaylist()
+    const { setUserHistoryList } = useHistory()
+    const { setAllPlaylists } = usePlaylist()
 
     const [ showVideoOptions, setShowVideoOptions ] = useState(false)
     const [ isVideoPresentInWatchLater, setIsVideoPresentInWatchLater ] = useState(false)

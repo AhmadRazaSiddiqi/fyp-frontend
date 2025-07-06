@@ -2,10 +2,9 @@
  * VideoPage.jsx - Improved hooks order and modern UI
  */
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import ReactPlayer from 'react-player';
 import {
   AiFillLike, AiOutlineLike, AiFillDislike, AiOutlineDislike
 } from 'react-icons/ai';
@@ -35,7 +34,7 @@ function VideoPage() {
   const { likedVideosList, dispatchLikedVideosList } = useLikedVideos();
   const { watchLaterList, dispatchWatchLaterList } = useWatchLater();
   const { showToast } = useToast();
-  const { userHistoryList, setUserHistoryList } = useHistory();
+  const { setUserHistoryList } = useHistory();
   const { trendingVideosList, updateTrendingVideoViews } = useTrendingVideos();
   const { updateAllVideosViews } = useAllVideos();
   const [videoLikedStatus, setVideoLikedStatus] = useState('neutral');
@@ -109,7 +108,6 @@ function VideoPage() {
     }
   };
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
-  const [loading, setLoading] = useState(true);
   const { id: videoId } = useParams();
   const [video, setVideo] = useState(null);
   const [error, setError] = useState(null);
@@ -128,7 +126,6 @@ function VideoPage() {
   const safeViews = video?.views || 0;
   const safeVideoSrcUrl = video?.videoSrcUrl || '';
   const safeUploader = video?.uploader || 'Unknown';
-  const safeCategory = video?.category || '';
   const safeDescription = video?.description || '';
 
   let videoViews;
@@ -140,47 +137,7 @@ function VideoPage() {
     videoViews = safeViews + '';
   }
 
-  let videoCode;
-  if (safeVideoSrcUrl && safeVideoSrcUrl.includes('v=')) {
-    try {
-      videoCode = safeVideoSrcUrl.split('v=')[1]?.split('&')[0];
-    } catch (error) {
-      console.error('Error parsing video URL:', error);
-      videoCode = null;
-    }
-  }
 
-  const opts = {
-    playerVars: {
-      autoplay: 1,
-      rel: 0,
-      showinfo: 0,
-      modestbranding: 1,
-      iv_load_policy: 3,
-      rel: 0,
-      disablekb: 1,
-      fs: 0,
-      hl: 'en',
-      cc_load_policy: 0,
-      vq: 'medium',
-    },
-    width: '100%',
-    height: '100%',
-  };
-
-  // YouTube player event handlers
-  const onReady = (event) => {
-    // Player is ready
-    // event.target.playVideo();
-  };
-  const onError = (event) => {
-    // Handle player errors gracefully
-    console.log('YouTube player error:', event.data);
-  };
-  const onStateChange = (event) => {
-    // Handle player state changes
-    // console.log('YouTube player state changed:', event.data);
-  };
 
   // Effects (always after hooks, never conditionally)
   useEffect(() => {
@@ -199,7 +156,7 @@ function VideoPage() {
         })
         .catch(err => setError("Video not found"));
     }
-  }, [videoId]);
+  }, [videoId, updateTrendingVideoViews, updateAllVideosViews]);
 
   useEffect(() => {
     if (videoNotFound) return;
@@ -302,7 +259,7 @@ function VideoPage() {
         }
       }
     })();
-  }, [likedVideosList, video?._id, watchLaterList, videoNotFound]);
+  }, [likedVideosList, video?._id, watchLaterList, videoNotFound, dislikedVideosList, setUserHistoryList]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

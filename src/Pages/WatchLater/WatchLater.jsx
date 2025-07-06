@@ -1,5 +1,4 @@
 import React,{ useEffect } from 'react'
-import { Link } from "react-router-dom"
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 import { useLocation } from "react-router-dom"
@@ -61,7 +60,7 @@ function WatchLater() {
         })()
       }
     }
-  },[])
+  },[dispatchWatchLaterList])
 
   return (
       <div className='page-container'>

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react"
-import jwt_decode from "jwt-decode"
+import React, { useState } from "react"
 import "./UserAuth.css"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"

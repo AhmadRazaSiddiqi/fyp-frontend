@@ -1,6 +1,6 @@
-import { useState } from "react"
+import React from 'react'
 import './Tabs.css'
-import { useAllVideos } from "../../index"
+import { useAllVideos } from '../../index'
 
 function Tabs()
 {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import './AddToPlaylistModal.css'
 import {
     GrClose
@@ -19,7 +19,6 @@ function AddToPlaylistModal({video, showPlaylistModal, setShowPlaylistModal})
     const { allPlaylists, setAllPlaylists }                   = usePlaylist()
     const { showToast }                                       = useToast()
 
-    const [ playlistCheckboxState, setPlaylistCheckboxState ] = useState([])
     const [ addToNewPlaylist, setAddToNewPlaylist ]           = useState(false)
     const [ newPlaylistName, setNewPlaylistName ]             = useState("")
 

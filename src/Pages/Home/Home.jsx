@@ -1,13 +1,11 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useEffect } from 'react'
 import axios from "axios"
-import jwt_decode from "jwt-decode"
 import { Link, useLocation } from "react-router-dom"
 import Lottie from "react-lottie"
 import './Home.css'
 import {
   Sidebar, 
   VideoCard, 
-  Footer,
   useTrendingVideos
 } from '../../index'
 import sherlock from '../../Assets/images/sherlock4.jpg'
@@ -16,7 +14,6 @@ import API_BASE_URL from '../../config/api'
 
 function Home() {
   const { trendingVideosList, setTrendingVideosList } = useTrendingVideos()
-  const [error, setError] = useState(false);
 
   const loadingObj = {
     loop: true,
@@ -40,15 +37,15 @@ function Home() {
         const response = await axios.get(`${API_BASE_URL}/api/home/trendingvideos`);
         if (response.data && response.data.trendingvideos) {
           setTrendingVideosList(response.data.trendingvideos);
-          setError(false);
         }
       } catch (error) {
         console.error('Error refetching trending videos:', error);
-        setError(true);
+        // Set empty array to prevent infinite loading
+        setTrendingVideosList([]);
       }
     };
     fetchTrendingVideos();
-  }, []);
+  }, [setTrendingVideosList]);
 
   let covervideo = {
     "_id": "62430b3be22ce0735254b2a5",
@@ -85,9 +82,8 @@ function Home() {
 
         <h2 className='homepage-trending-heading'>Trending Videos</h2>
         {
-          error ? (
-            <p style={{ textAlign: "center", color: "red" }}>Error loading trending videos. Please try again later.</p>
-          ) : trendingVideosList.length === 0 ? (
+          trendingVideosList.length===0 
+          ? (
             <Lottie options={loadingObj}
               height={380}
               style={{ margin: "auto"}}

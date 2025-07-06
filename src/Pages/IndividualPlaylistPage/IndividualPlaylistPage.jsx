@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import React, { useState, useEffect, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import './IndividualPlaylistPage.css'
 import {
@@ -20,8 +20,8 @@ function IndividualPlaylistPage()
     const playlistId = state?.playlistId
     const playListName = state?.playListName || 'Unknown Playlist'
 
-    // Safety check to ensure allPlaylists is always an array
-    const safePlaylists = allPlaylists || []
+    // Safety check to ensure allPlaylists is always an array - wrapped in useMemo
+    const safePlaylists = useMemo(() => allPlaylists || [], [allPlaylists])
 
     useEffect(() => {
         const fetchPlaylistVideos = async () => {

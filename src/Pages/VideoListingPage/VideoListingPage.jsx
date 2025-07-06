@@ -1,19 +1,16 @@
 import React,{ useEffect } from 'react'
-import { Link, useLocation } from "react-router-dom"
-import axios from "axios"
-import jwt_decode from "jwt-decode"
+import { useLocation } from "react-router-dom"
 import './VideoListingPage.css'
 import {
   VideoCard,
   Tabs,
   useAllVideos
 } from '../../index'
-import LoadingLottie from "../../Assets/lottie/loading-0.json"
 import { Sidebar } from '../../Components/Sidebar/Sidebar'
 
 function VideoListingPage() {
 
-  const { allVideosList, filteredVideosList } = useAllVideos()
+  const { filteredVideosList } = useAllVideos()
 
   const { pathname } = useLocation();
 

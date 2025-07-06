@@ -16,7 +16,7 @@ function Navbar() {
 
     const { dispatchWatchLaterList } = useWatchLater()
     const { dispatchLikedVideosList } = useLikedVideos()
-    const { allPlaylists, setAllPlaylists } = usePlaylist()
+    const { setAllPlaylists } = usePlaylist()
     const { setUserHistoryList } = useHistory()
 
     const { setUserLoggedIn } = useUserLogin(false)
@@ -38,7 +38,7 @@ function Navbar() {
                 setUserLoggedIn(true)
             }
         }
-    },[])
+    },[setUserLoggedIn])
 
     function logoutUser()
     {
