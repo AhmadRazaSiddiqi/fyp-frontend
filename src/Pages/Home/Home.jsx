@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react'
+import React,{ useEffect, useState } from 'react'
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 import { Link, useLocation } from "react-router-dom"
@@ -16,6 +16,7 @@ import API_BASE_URL from '../../config/api'
 
 function Home() {
   const { trendingVideosList, setTrendingVideosList } = useTrendingVideos()
+  const [error, setError] = useState(false);
 
   const loadingObj = {
     loop: true,
@@ -39,9 +40,11 @@ function Home() {
         const response = await axios.get(`${API_BASE_URL}/api/home/trendingvideos`);
         if (response.data && response.data.trendingvideos) {
           setTrendingVideosList(response.data.trendingvideos);
+          setError(false);
         }
       } catch (error) {
         console.error('Error refetching trending videos:', error);
+        setError(true);
       }
     };
     fetchTrendingVideos();
@@ -82,8 +85,9 @@ function Home() {
 
         <h2 className='homepage-trending-heading'>Trending Videos</h2>
         {
-          trendingVideosList.length===0 
-          ? (
+          error ? (
+            <p style={{ textAlign: "center", color: "red" }}>Error loading trending videos. Please try again later.</p>
+          ) : trendingVideosList.length === 0 ? (
             <Lottie options={loadingObj}
               height={380}
               style={{ margin: "auto"}}
