@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/fyp-frontend/static/css/main.efc14488.css",
-    "main.js": "/fyp-frontend/static/js/main.1de1403d.js",
+    "main.js": "/fyp-frontend/static/js/main.0808044f.js",
     "static/js/534.4f728f67.chunk.js": "/fyp-frontend/static/js/534.4f728f67.chunk.js",
     "static/media/sherlock4.jpg": "/fyp-frontend/static/media/sherlock4.27eb4a0e9caca777762f.jpg",
     "static/media/sherlock1.webp": "/fyp-frontend/static/media/sherlock1.50f5c64456f1b0a10d67.webp",
     "index.html": "/fyp-frontend/index.html",
     "main.efc14488.css.map": "/fyp-frontend/static/css/main.efc14488.css.map",
-    "main.1de1403d.js.map": "/fyp-frontend/static/js/main.1de1403d.js.map",
+    "main.0808044f.js.map": "/fyp-frontend/static/js/main.0808044f.js.map",
     "534.4f728f67.chunk.js.map": "/fyp-frontend/static/js/534.4f728f67.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.efc14488.css",
-    "static/js/main.1de1403d.js"
+    "static/js/main.0808044f.js"
   ]
 }
